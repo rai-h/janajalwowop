@@ -114,7 +114,11 @@ class _TripCardState extends State<TripCard> {
                     onPressed: widget.tripModel.fileStatus == 1
                         ? () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => TripDetails(),
+                              builder: (context) => TripDetails(
+                                tripCode: widget.tripModel.tripCode!,
+                                tripId: widget.tripModel.tripId!,
+                                status: widget.tripModel.statusId!,
+                              ),
                             ));
                           }
                         : () {

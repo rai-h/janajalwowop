@@ -40,4 +40,48 @@ class ApiBody {
         '</soapenv:Body>';
     return topHeader + body + closeEnvelope;
   }
+
+  static String getTripOrderList(
+    String userName,
+    String password,
+    String tripId,
+    String status,
+    String tripStartKm,
+  ) {
+    String body = '<soapenv:Body>'
+        '<web:getWOWTripOrderList>'
+        '<userName>$userName</userName>'
+        '<password>$password</password>'
+        '<tripId>$tripId</tripId>'
+        '<status>$status</status>'
+        '<tripStartKm>$tripStartKm</tripStartKm>'
+        '</web:getWOWTripOrderList>'
+        '</soapenv:Body>';
+    return topHeader + body + closeEnvelope;
+  }
+
+  static String getOrderOTPBody(
+      String userName,
+      String password,
+      String tripId,
+      String status,
+      String tripStartKm,
+      String orderId,
+      String orderStatus,
+      String mobile,
+      String orderNo) {
+    String body = '<soapenv:Body>'
+        '<web:getWOWTripOrderList>'
+        '<userName>$userName</userName>'
+        '<password>$password</password>'
+        '<tripId>$tripId</tripId>'
+        '<status>$status</status>'
+        '<orderId>$orderId</orderId>'
+        '<orderStatus>$orderStatus</orderStatus>'
+        '<custMobile>$mobile</custMobile>'
+        '<orderNo>$orderNo</orderNo>'
+        '</web:getWOWTripOrderList>'
+        '</soapenv:Body>';
+    return topHeader + body + closeEnvelope;
+  }
 }
