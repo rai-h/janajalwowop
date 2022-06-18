@@ -1,5 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:janajaldoot/controller/auth.controller.dart';
+import 'package:janajaldoot/sevices/wow.services.dart';
+import 'package:janajaldoot/ui/helping_widget/change_langouge_dailog.dart';
+import 'package:janajaldoot/ui/screens/login_screen/login_screen.dart';
+import 'package:janajaldoot/utils/janajal.dart';
+import 'package:janajaldoot/utils/shared_pref.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,11 +16,82 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  DateTime now = DateTime.now();
+  String startDate = Janajal.saleReportDareFormat.format(DateTime.now());
+  String endDate = Janajal.saleReportDareFormat.format(DateTime(
+      DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
+  String wowId = '';
+  @override
+  void initState() {
+    callApi();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  callApi() async {
+    wowId = Provider.of<AuthController>(context, listen: false).getWowId!;
+    WOWServices.getTodaysCollection(
+        context, wowId.toUpperCase(), startDate, endDate);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            showChangeLanguage(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: Colors.deepPurple.shade800,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 1)),
+              child: Row(
+                children: [
+                  Text(
+                    'A',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    width: 2,
+                  ),
+                  Text(
+                    '/अ',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GestureDetector(
+              onTap: () {
+                SharedPref.removeUserFromSharedPrefs();
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ));
+              },
+              child: Icon(
+                Icons.logout,
+                size: 30,
+              ),
+            ),
+          )
+        ],
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.white.withOpacity(0.8),
@@ -60,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'My WOW Status',
+                            'home_screen.my_wow_status'.tr(),
                             style: TextStyle(
                                 color: Colors.blue.shade700,
                                 fontSize: 24,
@@ -69,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ListTile(
                             leading: Icon(Icons.opacity),
                             title: Text(
-                              'Remainig Water : ',
+                              'home_screen.remaining_water'.tr(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -81,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ListTile(
                             leading: Icon(Icons.storm),
                             title: Text(
-                              'pH : ',
+                              'home_screen.ph'.tr(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -93,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ListTile(
                             leading: Icon(Icons.check_circle),
                             title: Text(
-                              'TDS : ',
+                              'home_screen.tds'.tr(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -137,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'Today\'s Collection',
+                      'home_screen.todays_collection'.tr(),
                       style: TextStyle(
                           color: Colors.deepOrange.shade500,
                           fontSize: 24,
@@ -151,18 +228,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(45),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.green),
-                      child: const Text(
-                        '\u{20B9} 356',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    )
+                    Consumer<AuthController>(builder: (context, notifier, _) {
+                      return Container(
+                        padding: const EdgeInsets.all(45),
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.green),
+                        child: Text(
+                          '\u{20B9} ${notifier.getTodaysCollection}',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      );
+                    })
                   ],
                 ),
               ),

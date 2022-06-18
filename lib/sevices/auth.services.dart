@@ -62,7 +62,7 @@ class AuthServices {
         Provider.of<AuthController>(context, listen: false)
             .changeWowStatus(remainingWater, pH, tds);
 
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => const MainWidget(),
           ),

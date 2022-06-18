@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Janajal {
   static const String email = "email";
   static const String password = "Password";
@@ -6,4 +8,5 @@ class Janajal {
   static const String custId = "customerId";
   static const String username = "username";
   static const String userModel = "userModel";
+  static DateFormat saleReportDareFormat = DateFormat('dd-MM-yyy');
 }

@@ -1,0 +1,46 @@
+{
+  "navbar": {
+    "home": "होम",
+    "my_trips": "मेरे ट्रिप",
+    "sales": "बिक्री"
+  },
+  "home_screen": {
+    "my_wow_status": "मेरे WOW की स्थिति",
+    "remaining_water": "उपलब्ध जल :",
+    "ph": "pH :",
+    "tds": "TDS :",
+    "todays_collection": "आज की बिक्री"
+  },
+
+  "my_trips_screen": {
+    "capture_odometer": "मीटर की फोटो लें",
+    "start_trip": "ट्रिप शुरू करें",
+    "view_details": "विवरण देखें",
+    "qunatity": "मात्रा :",
+    "customer_details": "ग्राहक विवरण:",
+    "delivery_location": "डिलीवरी का पता:",
+    "delivery_point": "डिलीवरी का स्थान:",
+    "deliver": "डिलीवर करें",
+    "navigate": "मार्गदर्शन"
+  },
+
+  "trip_otp_screen": {
+    "otp_verification": "OTP सत्यापित करें।",
+    "order_no :": "Order No :",
+    "otp_text": "OTP भेजा गया",
+    "otp_text_1": "आप 5 मिनट के लिए वैध है।",
+    "send_otp": "OTP भेजें।"
+  },
+
+  "sales_report_screen": {
+    "start_date": "दिनांक से ",
+    "sales_report": "बिक्री का विवरण",
+    "end_date": "दिनांक तक",
+    "amount": "राशी",
+    "quantity": "मात्रा"
+  },
+
+  "profile_screen": {
+    "change_language": "भाषा बदलो"
+  }
+}

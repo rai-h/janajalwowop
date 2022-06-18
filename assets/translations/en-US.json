@@ -1,0 +1,43 @@
+{
+  "navbar": {
+    "home": "Home",
+    "my_trips": "My Trips",
+    "sales": "Sales"
+  },
+  "home_screen": {
+    "my_wow_status": "My WOW Status",
+    "remaining_water": "Remaining Water :",
+    "ph": "pH :",
+    "tds": "TDS :",
+    "todays_collection": "Today's Collection"
+  },
+  "my_trips_screen": {
+    "capture_odometer": "Capture Odometer",
+    "start_trip": "Start Trip",
+    "view_details": "View Details",
+    "qunatity": "Quantity : ",
+    "customer_details": "Customer Details:",
+    "delivery_location": "Delivery Location:",
+    "delivery_point": "Delivery Point:",
+    "deliver": "Deliver",
+    "navigate": "Navigate"
+  },
+  "sales_report_screen": {
+    "start_date": "Start Date",
+    "sales_report": "Sales Report",
+    "end_date": "End Date",
+    "amount": "Amount",
+    "quantity": "Quantity"
+  },
+  "trip_otp_screen": {
+    "otp_verification": "OTP Verification",
+    "order_no :": "Order No :",
+    "otp_text": "A otp will be sent on",
+    "otp_text_1": "OTP is validfor 5 minutes.",
+    "send_otp": "Send OTP"
+  },
+
+  "profile_screen": {
+    "change_language": "Change Language"
+  }
+}

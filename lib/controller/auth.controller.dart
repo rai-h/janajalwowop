@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:janajaldoot/models/salesReport.model.dart';
+
+import '../models/tripOrder.model.dart';
 
 class AuthController extends ChangeNotifier {
   String? _username;
@@ -34,6 +37,42 @@ class AuthController extends ChangeNotifier {
 
   changeWowId(String? wowId) {
     _wowId = wowId;
+    notifyListeners();
+  }
+
+  List<TripOrderModel> _tripOrderList = [];
+  List<TripOrderModel> get getTripTripOrderList => _tripOrderList;
+
+  bool _isTripCompleted = false;
+  bool _endTripFileStatus = false;
+
+  bool get isTripCompleted => _isTripCompleted;
+  bool get endTripFileStatus => _endTripFileStatus;
+
+  changeTripOrderList(List<TripOrderModel> tripTripOrderList) {
+    tripTripOrderList.forEach((element) {
+      _isTripCompleted = element.orderStatus == '12' ? true : false;
+      _endTripFileStatus = element.fileStatus == 1 ? true : false;
+    });
+    _tripOrderList = tripTripOrderList;
+    notifyListeners();
+  }
+
+  List<SalesReportModel> _salesReportModelList = [];
+
+  List<SalesReportModel> get getSalesReportModelList => _salesReportModelList;
+
+  changeSalesReportList(List<SalesReportModel> salesReportModelList) {
+    _salesReportModelList = salesReportModelList;
+    notifyListeners();
+  }
+
+  String _todaysCollection = '0.0';
+
+  String get getTodaysCollection => _todaysCollection;
+
+  changeTodaysCollection(String todaysCollecTion) {
+    _todaysCollection = todaysCollecTion;
     notifyListeners();
   }
 }

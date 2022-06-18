@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:janajaldoot/ui/screens/home_screen/home_screen.dart';
+import 'package:janajaldoot/ui/screens/sales_screen/sales_screen.dart';
 
 import '../ui/screens/my_trip_screen/my_trip_screen.dart';
 
@@ -17,7 +18,7 @@ class UiController extends ChangeNotifier {
         mainWidget = HomeScreen();
         break;
       case 2:
-        mainWidget = Container();
+        mainWidget = SalesScreen();
         break;
       case 3:
         mainWidget = Container();

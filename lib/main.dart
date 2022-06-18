@@ -4,9 +4,11 @@ import 'package:janajaldoot/base_app/base_app.dart';
 import 'package:janajaldoot/controller/auth.controller.dart';
 import 'package:janajaldoot/controller/ui.controller.dart';
 import 'package:provider/provider.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   configLoading();
   runApp(
     MultiProvider(
@@ -18,7 +20,12 @@ void main() async {
           create: (_) => AuthController(),
         ),
       ],
-      child: const MyApp(),
+      child: EasyLocalization(
+          supportedLocales: [Locale('en', 'US'), Locale('hi', 'IN')],
+          path:
+              'assets/translations', // <-- change the path of the translation files
+          fallbackLocale: Locale('en', 'US'),
+          child: const MyApp()),
     ),
   );
 }
@@ -32,7 +39,7 @@ void configLoading() {
     ..radius = 10.0
     ..progressColor = Colors.black
     ..backgroundColor = Colors.black
-    ..indicatorColor = Colors.black
+    ..indicatorColor = Colors.green
     ..textColor = Colors.white
     ..maskColor = Colors.blue.withOpacity(0.5)
     ..userInteractions = false
@@ -48,6 +55,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: 'Janajal',
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,

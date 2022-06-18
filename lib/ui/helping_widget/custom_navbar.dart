@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:janajaldoot/controller/ui.controller.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
               child: const Icon(Icons.local_shipping_rounded),
             ),
             icon: const Icon(Icons.local_shipping_rounded),
-            label: 'My Trips',
+            label: 'navbar.my_trips'.tr(),
           ),
           BottomNavigationBarItem(
               activeIcon: Container(
@@ -61,7 +62,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                 'assets/images/icons/wow.png',
                 width: 27,
               ),
-              label: 'Home'),
+              label: 'navbar.home'.tr()),
           BottomNavigationBarItem(
             activeIcon: Container(
               padding: const EdgeInsets.all(10),
@@ -70,7 +71,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
               child: const Icon(Icons.currency_rupee),
             ),
             icon: const Icon(Icons.currency_rupee),
-            label: 'Sales',
+            label: 'navbar.sales'.tr(),
           ),
         ],
       );
